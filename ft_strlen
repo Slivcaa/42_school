@@ -1,0 +1,24 @@
+
+#include <stdio.h>
+
+int	ft_strlen(const char *str)
+{
+    int i;
+    
+    i = 0;
+	while(str[i])
+	i++;
+		return (i);
+}
+
+int main(void)
+{
+    char c1[] = "Good";
+    char c2[] = "Good Morning";
+  
+
+    printf("%s is: %d characters long \n", c1, ft_strlen(c1));
+    printf("%s is: %d characters long \n", c2, ft_strlen(c2));
+
+    return 0;
+}
