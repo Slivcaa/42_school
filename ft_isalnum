@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 
-int	fft_isalnum(int i)
+int	ft_isalnum(int i)
 {
 	if (('a' <= i && i <= 'z' ) || ('A' <= i && i <= 'Z')|| ('0' <= i && i <= '9'))
 		return (1);
@@ -14,9 +14,9 @@ int main(void)
     char c2 = 'k';
     char c3 = '4';
 
-    printf("%c is: %d\n", c1, ft_isalpha(c1));
-    printf("%c is: %d\n", c2, ft_isalpha(c2));
-    printf("%c is: %d\n", c3, ft_isalpha(c3)); 
+    printf("%c is: %d\n", c1, ft_isalnum(c1));
+    printf("%c is: %d\n", c2, ft_isalnum(c2));
+    printf("%c is: %d\n", c3, ft_isalnum(c3)); 
 
     return 0;
 }
