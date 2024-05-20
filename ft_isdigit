@@ -13,9 +13,9 @@ int main(void)
     char c2 = 'k';
     char c3 = '4';
 
-    printf("%c is: %d\n", c1, ft_isalpha(c1));
-    printf("%c is: %d\n", c2, ft_isalpha(c2));
-    printf("%c is: %d\n", c3, ft_isalpha(c3)); 
+    printf("%c is: %d\n", c1, ft_isdigit(c1));
+    printf("%c is: %d\n", c2, ft_isdigit(c2));
+    printf("%c is: %d\n", c3, ft_isdigit(c3)); 
 
     return 0;
 }
