@@ -15,8 +15,8 @@
 - **ft_memset**: Fills memory with a constant byte.
 - **ft_strlen**: Calculates the length of a string.
 - **ft_bzero**: Zeros out a byte string.
-- **ft_memcpy**: Copies memory area.
-- **ft_memmove**: Copies memory area with potential overlap.
+- **ft_memcpy**: Copies memory area.(It just copies data byte by byte from the source to the destination.)
+- **ft_memmove**: Copies memory area with potential overlap.( It first copies the data to a temporary area (or adjusts the copying direction) so that the original data isn't overwritten or corrupted during the copying process.)
 - **ft_strlcpy**: Copies a string to a specified size.
 - **ft_strlcat**: Concatenates a string to a specified size.
 - **ft_strchr**: Locates a character in a string.
