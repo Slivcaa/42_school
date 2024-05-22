@@ -1,0 +1,21 @@
+#include "libft.h"
+
+int	ft_toupper(int i)
+{
+	if (i >= 'a' && i <= 'z')
+		return (i - 32);
+	return (i);
+}
+
+int main() {
+    char test_chars[] = {'a', 'b', 'c', 'D', 'E', '1', '!', 'z'};
+    int num_chars = sizeof(test_chars) / sizeof(test_chars[0]);
+
+    for (int i = 0; i < num_chars; i++) {
+        char original = test_chars[i];
+        char upper = ft_toupper(original);
+        printf("Original: %c, Uppercase: %c\n", original, upper);
+    }
+
+    return 0;
+}
