@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+char *ft_strchr(const char *s, int i) {
+    while (*s) {
+        if (*s == i) {
+            return (char *)s;
+        }
+        s++;
+    }
+    if (i == '\0') {
+        return (char *)s;
+    }
+    return 0;
+}
+
+int main() {
+    // Пример строки для поиска
+    const char *str = "Hello, world!";
+    
+    // Символ для поиска
+    char ch = 'o';
+    
+    // Вызов функции ft_strchr
+    char *result = ft_strchr(str, ch);
+    
+    // Проверка и вывод результата
+    if (result != NULL) {
+        printf("Character '%c' found at position: %ld\n", ch, result - str);
+    } else {
+        printf("Character '%c' not found in the string.\n", ch);
+    }
+    
+    // Пример поиска символа, который отсутствует
+    ch = 'z';
+    result = ft_strchr(str, ch);
+    
+    if (result != NULL) {
+        printf("Character '%c' found at position: %ld\n", ch, result - str);
+    } else {
+        printf("Character '%c' not found in the string.\n", ch);
+    }
+
+    // Пример поиска нулевого символа
+    ch = '\0';
+    result = ft_strchr(str, ch);
+    
+    if (result != NULL) {
+        printf("Null terminator found at position: %ld\n", result - str);
+    } else {
+        printf("Null terminator not found in the string.\n");
+    }
+
+    return 0;
+}
