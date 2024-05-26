@@ -1,0 +1,57 @@
+//Функция ft_strmapi принимает строку s и функцию f, которая будет применяться к каждому символу строки.
+
+#include "libft.h"
+
+// Реализация функции ft_strmapi
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char)) {
+    if (s == NULL || f == NULL) {
+        return NULL;
+    }
+
+    // Определяем длину строки s
+    unsigned int len = 0;
+    while (s[len] != '\0') {
+        len++;
+    }
+
+    // Выделяем память для новой строки
+    char *result = (char *)malloc((len + 1) * sizeof(char));
+    if (result == NULL) {
+        return NULL; // Если выделение памяти не удалось
+    }
+
+    // Применяем функцию f к каждому символу строки s и сохраняем результаты в новой строке
+    for (unsigned int i = 0; i < len; i++) {
+        result[i] = f(i, s[i]);
+    }
+
+    // Добавляем завершающий нулевой символ
+    result[len] = '\0';
+
+    return result;
+}
+
+// Функция, которая преобразует символ в верхний регистр
+char to_upper(unsigned int index, char c) {
+    return toupper(c); // Используем функцию toupper из библиотеки ctype.h
+}
+
+int main() {
+    // Исходная строка
+    char *input = "Hello, world!";
+    printf("Input string: %s\n", input);
+
+    // Применяем функцию ft_strmapi для преобразования каждого символа в верхний регистр
+    char *result = ft_strmapi(input, &to_upper);
+    if (result == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    printf("Result string: %s\n", result);
+
+    // Освобождаем выделенную память для результата
+    free(result);
+
+    return 0;
+}
