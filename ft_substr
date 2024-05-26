@@ -1,0 +1,42 @@
+#include "libft.h"
+
+// Реализация ft_substr
+char *ft_substr(char const *s, unsigned int start, size_t len) {
+    char *substr;
+    size_t i, str_len;
+
+    if (s == NULL) {
+        return NULL;
+    }
+
+    str_len = strlen(s);
+
+    // Если start больше длины строки, возвращаем пустую строку
+    if (start >= str_len) {
+        substr = (char *)malloc(1);
+        if (substr == NULL) {
+            return NULL;
+        }
+        substr[0] = '\0';
+        return substr;
+    }
+
+    // Определяем фактическую длину подстроки
+    if (len > str_len - start) {
+        len = str_len - start;
+    }
+
+    // Выделяем память для подстроки
+    substr = (char *)malloc(len + 1);
+    if (substr == NULL) {
+        return NULL;
+    }
+
+    // Копируем подстроку
+    for (i = 0; i < len; i++) {
+        substr[i] = s[start + i];
+    }
+    substr[len] = '\0';
+
+    return substr;
+}
