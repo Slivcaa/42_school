@@ -11,3 +11,10 @@ int ft_strncmp(const char *s1, const char *s2, size_t n) {
     }
     return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
+
+int main()
+{
+ft_strncmp("hello", "helLO", 3); // Вернет 0, т.к. первые 3 символа одинаковы
+ft_strncmp("hello", "helLO", 5); // Вернет положительное число, т.к. 'l' > 'L'
+return(0);
+}
