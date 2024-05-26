@@ -1,0 +1,10 @@
+#include "libft.h"
+
+// Реализация функции ft_putendl_fd
+void ft_putendl_fd(char *s, int fd) {
+    while (*s != '\0') {
+        write(fd, s, 1);
+        s++;
+    }
+    write(fd, "\n", 1); // Добавляем символ новой строки после вывода строки s
+}
