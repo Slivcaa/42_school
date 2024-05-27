@@ -1,0 +1,54 @@
+#include "libft.h"
+
+char *ft_strtrim(char const *s1, char const *set) {
+    size_t start;
+    size_t end;
+    char *trimmed_str;
+
+    // Проверка на NULL
+    if (s1 == NULL || set == NULL) {
+        return NULL;
+    }
+
+    // Инициализация начала и конца строки
+    start = 0;
+    end = strlen(s1);
+
+    // Поиск первого символа, не входящего в set, с начала строки
+    while (s1[start] && strchr(set, s1[start])) {
+        start++;
+    }
+
+    // Поиск первого символа, не входящего в set, с конца строки
+    while (end > start && strchr(set, s1[end - 1])) {
+        end--;
+    }
+
+    // Выделение памяти для подстроки + 1 для нулевого символа
+    trimmed_str = (char *)malloc(sizeof(char) * (end - start + 1));
+    if (trimmed_str == NULL) {
+        return NULL; // Проверка на случай неудачного выделения памяти
+    }
+
+    // Копирование подстроки в новую память
+    strncpy(trimmed_str, &s1[start], end - start);
+    trimmed_str[end - start] = '\0'; // Добавление нулевого символа
+
+    return trimmed_str;
+}
+
+// Пример использования функции
+int main() {
+    char str[] = "   Hello, World!   ";
+    char set[] = " ";
+
+    char *trimmed = ft_strtrim(str, set);
+    if (trimmed != NULL) {
+        printf("Trimmed string: '%s'\n", trimmed);
+        free(trimmed); // Освобождаем выделенную память
+    } else {
+        printf("Memory allocation failed.\n");
+    }
+
+    return 0;
+}
