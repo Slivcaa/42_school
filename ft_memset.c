@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mslivca <mslivca@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/21 13:51:54 by mslivca           #+#    #+#             */
+/*   Updated: 2024/05/28 15:20:48 by mslivca          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
 void	*ft_memset(void *b, int c, size_t len)
 {
 	char	*p;
@@ -10,18 +24,3 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
-
-// int main(void)
-// {
-//     char buffer[10];
-
-//     ft_memset(buffer, 'X', sizeof(buffer));
-
-//     for (size_t i = 0; i < sizeof(buffer); i++)
-//     {
-//         printf("%c ", buffer[i]);
-//     }
-//     printf("\n");
-
-//     return 0;
-// }
