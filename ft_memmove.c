@@ -1,45 +1,39 @@
-void *ft_memmove(void *dest, const void *src, size_t n)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mslivca <mslivca@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/21 17:07:04 by mslivca           #+#    #+#             */
+/*   Updated: 2024/05/28 17:51:36 by mslivca          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	*ft_memmove(void *s1, const void *s2, size_t n)
 {
-    size_t i;
-    char *d;
-    char *s;
-    
-    i = 0;
-    d = (char *)dest;
-    s = (char *)src;
+	size_t	len;
 
-    if(d == s)
-    return (dest);
-    if(d < s) 
-    {
-        size_t i = 0;
-        while(i < n)
-        {
-            d[i] = s[i];
-            i++;
-
-        } 
-    }
-    else
-    {
-        size_t i = n;
-        while(i > 0)
-        {
-            d[i] = s[i];
-            i--;
-
-        } 
-    }
-    return (dest);
-}
-
-int main(void)
-{
-    int src[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int dest[10];
-
-    ft_memmove(dest,src,sizeof(int) * 10);
-    for(int i = 0; i < 10; i++)
-    printf("%d", i, dest[i]);
-    return (0);
+	len = 0;
+	if (s2 < s1)
+	{
+		len = n;
+		while (len > 0)
+		{
+			len--;
+			((unsigned char *)s1)[len] = ((unsigned char *)s2)[len];
+		}
+	}
+	else
+	{
+		len = 0;
+		while (len < n)
+		{
+			((unsigned char *)s1)[len] = ((unsigned char *)s2)[len];
+			len++;
+		}
+	}
+	return (s1);
 }
