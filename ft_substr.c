@@ -6,43 +6,50 @@
 /*   By: mslivca <mslivca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:50:15 by mslivca           #+#    #+#             */
-/*   Updated: 2024/05/28 14:50:19 by mslivca          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:46:40 by mslivca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len) 
+static size_t	str_len(char const *str)
 {
-    char *substr;
-    size_t i, str_len;
+	size_t	i;
 
-    if (s == NULL) {
-        return NULL;
-    }
+	i = 0;
+	while (*(str + i))
+		i++;
+	return (i);
+}
 
-    str_len = strlen(s);
+static char	*str_new(size_t n)
+{
+	char	*str;
 
-    if (start >= str_len) {
-        substr = (char *)malloc(1);
-        if (substr == NULL) {
-            return NULL;
-        }
-        substr[0] = '\0';
-        return substr;
-    }
+	str = (char *)malloc(sizeof(char) * (n + 1));
+	if (!str)
+		return (NULL);
+	return (str);
+}
 
-    if (len > str_len - start) {
-        len = str_len - start;
-    }
-    substr = (char *)malloc(len + 1);
-    if (substr == NULL) {
-        return NULL;
-    }
-    for (i = 0; i < len; i++) {
-        substr[i] = s[start + i];
-    }
-    substr[len] = '\0';
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+	char	*str_ptr;
 
-    return substr;
+	if (!s)
+		return (NULL);
+	if (start > str_len(s))
+		len = 0;
+	else if (len > (str_len(s) - start))
+		len = str_len(s) - start;
+	str = str_new(len);
+	if (!str)
+		return (NULL);
+	s += start;
+	str_ptr = str;
+	*(str + len) = '\0';
+	while (len-- && *s)
+		*str++ = *s++;
+	return (str_ptr);
 }
