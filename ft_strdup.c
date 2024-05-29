@@ -6,31 +6,43 @@
 /*   By: mslivca <mslivca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 14:49:22 by mslivca           #+#    #+#             */
-/*   Updated: 2024/05/28 15:27:03 by mslivca          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:32:57 by mslivca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strdup(const char *s1)
+static size_t	str_len(char const *str)
 {
-    size_t len = 0;
+	size_t	i;
 
-    while (s1[len] != '\0')
-    {
-        len++;
-    }
+	i = 0;
+	while (*(str + i))
+		i++;
+	return (i);
+}
 
-    char *dup = (char *)malloc((len + 1) * sizeof(char));
-    if (dup == NULL)
-    {
-        return NULL;
-    }
+static char	*str_new(size_t n)
+{
+	char	*str;
 
-    for (size_t i = 0; i <= len; i++)
-    {
-        dup[i] = s1[i];
-    }
+	str = (char *)malloc(sizeof(char) * (n + 1));
+	if (!str)
+		return (NULL);
+	return (str);
+}
 
-    return dup;
+char	*ft_strdup(char const *src)
+{
+	char	*dest;
+	char	*start;
+
+	dest = str_new(str_len(src));
+	if (!dest)
+		return (NULL);
+	start = dest;
+	while (*src)
+		*dest++ = *src++;
+	*dest = '\0';
+	return (start);
 }
