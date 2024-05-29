@@ -6,11 +6,12 @@
 /*   By: mslivca <mslivca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 18:16:43 by mslivca           #+#    #+#             */
-/*   Updated: 2024/05/28 15:28:17 by mslivca          ###   ########.fr       */
+/*   Updated: 2024/05/29 19:09:06 by mslivca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
