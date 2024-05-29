@@ -6,13 +6,13 @@
 /*   By: mslivca <mslivca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 13:52:09 by mslivca           #+#    #+#             */
-/*   Updated: 2024/05/22 17:37:26 by mslivca          ###   ########.fr       */
+/*   Updated: 2024/05/29 19:07:31 by mslivca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-    ft_memset(s, 0, n);
+	ft_memset(s, 0, n);
 }
