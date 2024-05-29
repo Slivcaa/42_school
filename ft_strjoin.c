@@ -6,32 +6,47 @@
 /*   By: mslivca <mslivca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 15:04:54 by mslivca           #+#    #+#             */
-/*   Updated: 2024/05/28 15:27:57 by mslivca          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:57:22 by mslivca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strjoin(char const *s1, char const *s2)
+static size_t	str_len(char const *str)
 {
-    if (s1 == NULL || s2 == NULL)
-    {
-        return NULL;
-    }
+	size_t	i;
 
-    size_t len_s1 = strlen(s1);
-    size_t len_s2 = strlen(s2);
-    size_t total_len = len_s1 + len_s2;
+	i = 0;
+	while (*(str + i))
+		i++;
+	return (i);
+}
 
-    char *result = (char *)malloc(total_len + 1);
-    if (result == NULL)
-    {
-        return NULL;
-    }
+static char	*str_new(size_t n)
+{
+	char	*str;
 
-    memcpy(result, s1, len_s1);
-   
-    memcpy(result + len_s1, s2, len_s2 + 1);
+	str = (char *)malloc(sizeof(char) * (n + 1));
+	if (!str)
+		return (NULL);
+	return (str);
+}
 
-    return result;
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*str;
+	char	*str_ptr;
+
+	if (!s1 || !s2)
+		return (NULL);
+	str = str_new(str_len(s1) + str_len(s2));
+	if (!str)
+		return (NULL);
+	str_ptr = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2)
+		*str++ = *s2++;
+	*str = '\0';
+	return (str_ptr);
 }
