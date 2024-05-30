@@ -35,6 +35,18 @@ files 	   = ft_strlen \
 			 ft_putendl_fd \
 			 ft_putnbr_fd \
 
+BONUS	 = ft_lstadd_back \
+       			 ft_lstadd_front \
+			 ft_lstclear \
+			 ft_lstdelone \
+			 ft_lstiter \
+			 ft_lstlast \
+			 ft_lstmap \ 
+			 ft_lstnew \ 
+			 ft_lstsize \
+
+BONUS_OBJS		= $(BONUS:.c=.o)
+
 Compiler	= gcc
 
 CmpFlags	= -Wall -Wextra -Werror
@@ -61,5 +73,8 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+bonus:			$(OBJS) $(BONUS_OBJS)
+				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 .PHONY: all, clean, fclean, re
